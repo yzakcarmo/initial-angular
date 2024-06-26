@@ -9,11 +9,13 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import { WeatherHomeComponent } from './modules/weather/page/weather-home/weather-home.component';
 import {RouterOutlet} from "@angular/router";
 import {AppRoutingModule} from "./app-routing.module";
+import { WeatherCardComponent } from './modules/weather/components/weather-card/weather-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WeatherHomeComponent
+    WeatherHomeComponent,
+    WeatherCardComponent
   ],
   imports: [
     BrowserModule,

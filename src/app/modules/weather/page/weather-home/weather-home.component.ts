@@ -12,14 +12,14 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 export class WeatherHomeComponent implements OnInit, OnDestroy {
   private readonly destroy$: Subject<void> = new Subject()
   initialCityName = 'São Paulo';
-  weatherData!: WeatherData;
+  weatherDatas!: WeatherData;
   searchIcon = faMagnifyingGlass
 
   constructor(private weatherService: WeatherService) {
   }
 
   ngOnInit(): void {
-    this.getWeatherData(this.initialCityName);
+    this.getWeatherData(this.initialCityName)
   }
 
   getWeatherData(cityName: string): void {
@@ -28,8 +28,8 @@ export class WeatherHomeComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (response) => {
-          response && (this.weatherData = response);
-          console.log(this.weatherData);
+          response && (this.weatherDatas = response);
+          console.log(this.weatherDatas);
         },
         error: (error) => console.log(error)
       })
@@ -37,7 +37,6 @@ export class WeatherHomeComponent implements OnInit, OnDestroy {
 
   onSubmit() : void {
     this.getWeatherData(this.initialCityName);
-    console.log("Chamou");
     this.initialCityName = '';
   }
 
