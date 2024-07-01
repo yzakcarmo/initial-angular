@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {WeatherData} from "../../../models/interfaces/WeathersData.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ export class WeatherService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getWeatherData(cityName: string):Observable<any> {
-    return this.httpClient.get('https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&units=metric&mode=json&appid=' + this.apiKey, {})
+  getWeatherData(cityName: string){
+    return this.httpClient.get<WeatherData>('https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&units=metric&mode=json&appid=' + this.apiKey, {})
   }
 }
